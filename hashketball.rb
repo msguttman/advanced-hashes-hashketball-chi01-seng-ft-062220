@@ -230,5 +230,3 @@ def big_shoe_rebounds
   b_s_rebounds
 end
 
-  
-  
