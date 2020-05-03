@@ -230,3 +230,24 @@ def big_shoe_rebounds
   b_s_rebounds
 end
 
+def long_name_steals_a_ton?
+  long_name = ""
+  most_steals_amount = 0
+  most_steals_name = ""
+  game_hash.each do |location, attributes|
+    attributes.each do |attributes, values|
+      if attributes == :players
+        values.each do |label, stat|
+          if label[:player_name].length > long_name.length
+            long_name = label[:player_name]
+          end
+          if label[:steals] > most_steals_amount
+            most_steals_amount = label[:steals]
+            most_steals_name = label[:player_name]
+          end
+        end
+      end
+    end
+  end
+  long_name == most_steals_name
+end
